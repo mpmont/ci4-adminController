@@ -64,9 +64,9 @@ class AdminController extends Controller
     }
 
     /**
-     * *******************
+     * ******************
      *   REMAP AUTOLOAD VIEWS
-     * *******************
+     * ******************
      *
      * Remap the CI request, running the method
      * and loading the view automagically
@@ -90,7 +90,7 @@ class AdminController extends Controller
             if (!empty($confirm)) {
                 return redirect()->to($redirect['url'])->with('confirm', $redirect['confirm']);
             }
-            $errors = (isset($redirect['confirm'])) ? $redirect['confirm'] : null;
+            $errors = (isset($redirect['errors'])) ? $redirect['errors'] : null;
             if (!empty($errors)) {
                 return redirect()->to($redirect['url'])->with('errors', $redirect['errors']);
             }
@@ -109,9 +109,9 @@ class AdminController extends Controller
     }
 
     /**
-     * *******************
+     * ******************
      *   CRUD FUNCTIONS
-     * *******************
+     * ******************
      */
 
     /**

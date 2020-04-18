@@ -66,9 +66,9 @@ class BaseController extends Controller
     }
 
     /**
-     * ****************************
+     * ***************************
      *   REMAP AUTOLOAD VIEWS
-     * ****************************
+     * ***************************
      */
 
     /**
@@ -94,7 +94,7 @@ class BaseController extends Controller
             if (!empty($confirm)) {
                 return redirect()->to($redirect['url'])->with('confirm', $redirect['confirm']);
             }
-            $errors = (isset($redirect['confirm'])) ? $redirect['confirm'] : null;
+            $errors = (isset($redirect['errors'])) ? $redirect['errors'] : null;
             if (!empty($errors)) {
                 return redirect()->to($redirect['url'])->with('errors', $redirect['errors']);
             }
