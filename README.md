@@ -13,44 +13,46 @@ codeigniter-base-controller is an extended `baseController` class to use in your
     class Articles extends adminController
     {
     
-    public function __construct()
-    {
-        $this->article = model('App\Models\ArticleModel');
-        $this->model_class = 'article';
-    }
-    
-    /**
-     * List Articles
-     */
-    public function index()
-    {
-        $this->data['articles'] = $this->article->findAll();
-    }
-    
-    /**
-     * Create Article
-     */
-    public function create()
-    {
-        return $this->admin_create();
-    }
-    
-    /**
-     * Update a Article
-     * @param int $id The article id
-     */
-    public function update($id)
-    {
-        return $this->admin_update($id);
-    }
-    
-    /**
-     * Delete Article
-     * @param int $id The article id
-     */
-    public function delete($id = null)
-    {
-        return $this->admin_delete($id);
+        public function __construct()
+        {
+            $this->article = model('App\Models\ArticleModel');
+            $this->model_class = 'article';
+        }
+        
+        /**
+         * List Articles
+         */
+        public function index()
+        {
+            $this->data['articles'] = $this->article->findAll();
+        }
+        
+        /**
+         * Create Article
+         */
+        public function create()
+        {
+            return $this->admin_create();
+        }
+        
+        /**
+         * Update a Article
+         * @param int $id The article id
+         */
+        public function update($id)
+        {
+            return $this->admin_update($id);
+        }
+        
+        /**
+         * Delete Article
+         * @param int $id The article id
+         */
+        public function delete($id = null)
+        {
+            return $this->admin_delete($id);
+        }
+        
     }
 
 
