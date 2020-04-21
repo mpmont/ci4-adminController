@@ -15,6 +15,10 @@ namespace App\Controllers;
  * @package CodeIgniter
  *
  * @author Marco Monteiro @marcogmonteiro
+ * @license    https://opensource.org/licenses/MIT  MIT License
+ *
+ * @link       https://github.com/mpmont/ci4-adminController
+ * @link       https://blog.marcomonteiro.net
  */
 
 use CodeIgniter\Controller;
@@ -29,7 +33,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['form', 'error'];
+    protected $helpers = [];
     protected $view = null; // Set default yield view
     protected $data = []; // Set default data array
     protected $layout = 'layouts/application'; // Set default layout
@@ -66,9 +70,9 @@ class BaseController extends Controller
     }
 
     /**
-     * ***************************
+     * ************************
      *   REMAP AUTOLOAD VIEWS
-     * ***************************
+     * ************************
      */
 
     /**

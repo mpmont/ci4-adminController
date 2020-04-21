@@ -11,6 +11,10 @@ namespace App\Controllers\admin;
  * @package CodeIgniter
  *
  * @author Marco Monteiro @marcogmonteiro
+ * @license    https://opensource.org/licenses/MIT  MIT License
+ *
+ * @link       https://github.com/mpmont/ci4-adminController
+ * @link       https://blog.marcomonteiro.net
  */
 use CodeIgniter\Controller;
 use CodeIgniter\Router;
@@ -64,9 +68,9 @@ class AdminController extends Controller
     }
 
     /**
-     * ******************
+     * *****************
      *   REMAP AUTOLOAD VIEWS
-     * ******************
+     * *****************
      *
      * Remap the CI request, running the method
      * and loading the view automagically
@@ -109,9 +113,9 @@ class AdminController extends Controller
     }
 
     /**
-     * ******************
+     * *****************
      *   CRUD FUNCTIONS
-     * ******************
+     * *****************
      */
 
     /**
