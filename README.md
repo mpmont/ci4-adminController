@@ -179,11 +179,28 @@ In case you need to override this behavior that can be done by returning a difer
 
 This way you're redirecting the user to your /admin/list_articles with the flashdata "your article was updated.".
 
+## Add your own language variables
+
+The CRUD methods now support the use of language variables. Those should be se in your _app/languages_ folder depending on your locales settings. For now the following languages are supported:
+
+* English
+* Portuguese
+
+## Error Helper
+
+In your _adminController.php_ there's a custom helper being loaded called error helper. That should be placed in your helpers folder and it's only purpose is to serve as a shortcut for the 404 exception. 
+
+    // This is just the same thing
+    show_404();
+    // as 
+    throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+
+You can now use this on your controllers too everytime you need to show a 404 error. Since its autoloaded on your adminController.
+
 ## Roadmap
 
 * Add a miscellaneous message to the flashdata redirects;
 * Make the error messages work with both arrays and strings;
-* Add language variables to the default error and success messages;
 * Add better error messages based the class name, so we can say something like "Your article was update" instead of item;
 * Add a way of defining the helpers that will be loaded in the controller:
 * Add a way of defining the models that will be loaded in the controller;
