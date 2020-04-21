@@ -205,8 +205,6 @@ You can now use this on your controllers too everytime you need to show a 404 er
 
 ## Roadmap
 
-* Add a miscellaneous message to the flashdata redirects;
-* Make the error messages work with both arrays and strings;
 * Add better error messages based the class name, so we can say something like "Your article was update" instead of item;
 * Add a way of defining the helpers that will be loaded in the controller:
 * Add a way of defining the models that will be loaded in the controller;
