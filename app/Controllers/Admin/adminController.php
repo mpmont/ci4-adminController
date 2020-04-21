@@ -50,11 +50,8 @@ class AdminController extends Controller
         //--------------------------------------------------------------------
         // E.g.:
         // $this->session = \Config\Services::session();
+        // Required if you're using flashdata
         $this->session = \Config\Services::session();
-
-        //--------------------------------------------------------------------
-        // Start base vars
-        //--------------------------------------------------------------------
 
         //--------------------------------------------------------------------
         // Check for flashdata
@@ -68,9 +65,9 @@ class AdminController extends Controller
     }
 
     /**
-     * *****************
+     * --------------------------------------------------------------------
      *   REMAP AUTOLOAD VIEWS
-     * *****************
+     * --------------------------------------------------------------------
      *
      * Remap the CI request, running the method
      * and loading the view automagically
@@ -98,6 +95,10 @@ class AdminController extends Controller
             if (!empty($errors)) {
                 return redirect()->to($redirect['url'])->with('errors', $redirect['errors']);
             }
+            $msg = (isset($redirect['msg'])) ? $redirect['msg'] : null;
+            if (!empty($msg)) {
+                return redirect()->to($redirect['url'])->with('msg', $redirect['msg']);
+            }
             return redirect()->to($redirect['url']);
         }
 
@@ -113,13 +114,13 @@ class AdminController extends Controller
     }
 
     /**
-     * *****************
+     * --------------------------------------------------------------------
      *   CRUD FUNCTIONS
-     * *****************
+     * --------------------------------------------------------------------
      */
 
     /**
-     * deefault create function
+     * default create function
      */
     protected function admin_create()
     {

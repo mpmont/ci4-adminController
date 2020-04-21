@@ -144,6 +144,12 @@ If you want to return errors then just change the confirm key to errors, however
         ]
     ];
 
+In case you need to return a message that is neither a success or an error you can do that with the _mgs_ return key.
+
+    return [
+        'url' => '/homepage',
+        'msg' => 'Star Trek is great, specially when Chewbacca shows up!'
+    ];
 
 ## adminController CRUD
 
