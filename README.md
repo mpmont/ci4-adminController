@@ -151,6 +151,13 @@ In case you need to return a message that is neither a success or an error you c
         'msg' => 'Star Trek is great, specially when Chewbacca shows up!'
     ];
 
+In any case if you just want to do a readirect like you would normally do in your controller method that is supported too. In the same example presented you would just do:
+
+    if ($email->send() ) {
+        redirect()->to('/homepage');
+    }
+
+
 ## adminController CRUD
 
 There's a few functions that you can use in your adminController that are not avaiable in your baseController. To do that some rules must be followed. First you need to load the main model your controller will be working with. Let's say you have a Articles controller and a ArticleModel first you load your model.
