@@ -86,7 +86,7 @@ class AdminController extends Controller
             show_404(strtolower(get_class($this)) . '/' . $method);
         }
 
-        if (isset($redirect) && get_class($redirect) === 'CodeIgniter\HTTP\RedirectResponse') {
+        if (isset($redirect) && is_object($redirect) && get_class($redirect) === 'CodeIgniter\HTTP\RedirectResponse') {
             return $redirect;
         } else if (isset($redirect['url'])) {
             $confirm = (isset($redirect['confirm'])) ? $redirect['confirm'] : null;
