@@ -2,7 +2,7 @@
 
 [![GitHub version](https://badge.fury.io/gh/mpmont%2Fci4-adminController.svg)](https://badge.fury.io/gh/mpmont%2Fci4-adminController)
 
-codeigniter-base-controller is an extended `baseController` class to use in your CodeIgniter applications. Any controllers that inherit from `baseController` or `adminController` get intelligent view autoloading and layout support. It's strongly driven by the ideals of convention over configuration, favouring simplicity and consistency over configuration and complexity.
+codeigniter-base-controller is an extended `BaseController` class to use in your CodeIgniter applications. Any controllers that inherit from `BaseController` or `AdminController` get intelligent view autoloading and layout support. It's strongly driven by the ideals of convention over configuration, favouring simplicity and consistency over configuration and complexity.
 
 ## Synopsis a controller that extends to adminController
 
@@ -10,7 +10,7 @@ codeigniter-base-controller is an extended `baseController` class to use in your
     
     use App\Models\ArticleModel;
     
-    class Articles extends adminController
+    class Articles extends AdminController
     {
     
         public function __construct()
@@ -58,7 +58,7 @@ codeigniter-base-controller is an extended `baseController` class to use in your
 
 ## Usage
 
-Drag the **adminController.php** file into your _app/Controllers/Admin/_ folder. This way, you have a distinct difference bettwen your backend and front-end. All your controller inside this folder should extend to adminController and your controllers outside this folder should extend to baseController. This way, only your backend controllers will have access to your CRUD functions.
+Drag the **AdminController.php** file into your _app/Controllers/Admin/_ folder. This way, you have a distinct difference bettwen your backend and front-end. All your controller inside this folder should extend to adminController and your controllers outside this folder should extend to baseController. This way, only your backend controllers will have access to your CRUD functions.
 
 ## Views and Layouts
 
@@ -97,6 +97,25 @@ Like with `$this->view`, `$this->layout` can also be used to specify an unconven
     $this->layout = 'layouts/mobile.php';
 
 Any variables set in `$this->data` will be passed through to both the view and the layout files.
+
+
+## Loading Helpers in your controllers
+
+If you want to load helpers in your controllers in a global scope and not inside a function all your have to do is declare the helpers property as array with all your helpers, like so:
+
+
+ 
+    <?php namespace App\Controllers;
+    
+    class Home extends AadminController
+    {
+        protected $helpers = ['url'];
+    
+        public function index()
+        {
+        }
+    
+    }
 
 
 ## Redirects and flashdata
@@ -158,7 +177,7 @@ In any case if you just want to do a readirect like you would normally do in you
     }
 
 
-## adminController CRUD
+## AdminController CRUD
 
 There's a few functions that you can use in your adminController that are not avaiable in your baseController. To do that some rules must be followed. First you need to load the main model your controller will be working with. Let's say you have a Articles controller and a ArticleModel first you load your model.
 
@@ -213,8 +232,6 @@ You can now use this on your controllers too everytime you need to show a 404 er
 ## Roadmap
 
 * Add better error messages based the class name, so we can say something like "Your article was update" instead of item;
-* Add a way of defining the helpers that will be loaded in the controller:
-* Add a way of defining the models that will be loaded in the controller;
 
 ## Codeigniter 3 version, no CRUD controller, only autoload views
 
