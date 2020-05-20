@@ -61,7 +61,7 @@ class AdminController extends Controller
 
         // Arguments to be used in the callback remap
         $segments = $request->uri->getSegments();
-        $this->arguments = array_slice($segments, 3);
+        $this->arguments = array_slice($segments, (($this->directory === '') ? 2 : 3));
     }
 
     /**
@@ -78,7 +78,7 @@ class AdminController extends Controller
         $router = service('router');
 
         $controller_full_name = explode('\\', $router->controllerName());
-        $view_folder = strtolower('admin/' . end($controller_full_name));
+        $view_folder = strtolower($this->directory . '/' . end($controller_full_name));
 
         if (method_exists($this, $method)) {
             $redirect = call_user_func_array(array($this, $method), $this->arguments);
