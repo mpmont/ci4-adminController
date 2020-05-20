@@ -211,6 +211,12 @@ In case you need to override this behavior that can be done by returning a difer
 
 This way you're redirecting the user to your /admin/list_articles with the flashdata "your article was updated.".
 
+### Use AdminController in root directory
+
+In case you want to use AdminController in root directory, or any other directory change the $directory property.
+
+    protected $directory = ''; // Set default directory
+
 ## Add your own language variables
 
 The CRUD methods now support the use of language variables. Those should be se in your _app/languages_ folder depending on your locales settings. For now the following languages are supported:
