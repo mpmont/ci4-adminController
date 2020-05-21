@@ -62,6 +62,11 @@ class AdminController extends Controller
         // Arguments to be used in the callback remap
         $segments = $request->uri->getSegments();
         $this->arguments = array_slice($segments, (($this->directory === '') ? 2 : 3));
+        if ($this->directory === '') {
+            $this->redirect = $this->request->uri->getSegment(1);
+        } else {
+            $this->request->uri->getSegment(1) . '/' . $this->request->uri->getSegment(2);
+        }
     }
 
     /**
@@ -130,7 +135,7 @@ class AdminController extends Controller
             try {
                 $this->{$this->model_class}->insert($this->request->getPost());
                 return [
-                    'url' => '/' . $this->request->uri->getSegment(1) . '/' . $this->request->uri->getSegment(2),
+                    'url' => '/' . $this->redirect,
                     'confirm' => 'The item was created',
                 ];
             } catch (\Exception $e) {
@@ -154,7 +159,7 @@ class AdminController extends Controller
             try {
                 $this->{$this->model_class}->update($id, $this->request->getPost());
                 return [
-                    'url' => '/' . $this->request->uri->getSegment(1) . '/' . $this->request->uri->getSegment(2),
+                    'url' => '/' . $this->redirect,
                     'confirm' => 'The item was updated.',
                 ];
             } catch (\Exception $e) {
@@ -175,7 +180,7 @@ class AdminController extends Controller
         }
         $this->{$this->model_class}->delete($id);
         return [
-            'url' => '/' . $this->request->uri->getSegment(1) . '/' . $this->request->uri->getSegment(2),
+            'url' => '/' . $this->redirect,
             'confirm' => 'The item was deleted.',
         ];
     }
