@@ -128,12 +128,13 @@ class AdminController extends Controller
 
     /**
      * default create function
+     * @param array $data The form data
      */
-    protected function admin_create()
+    protected function admin_create(array $data)
     {
         if ($_POST) {
             try {
-                $this->{$this->model_class}->insert($this->request->getPost());
+                $this->{$this->model_class}->insert($data);
                 return [
                     'url' => '/' . $this->redirect,
                     'confirm' => 'The item was created',
@@ -147,9 +148,10 @@ class AdminController extends Controller
 
     /**
      * Default update function
-     * @param int $id The id we're working with
+     * @param int   $id   The id we're working with
+     * @param array $data The form data
      */
-    protected function admin_update($id)
+    protected function admin_update($id, array $data)
     {
         if (is_null($id)) {
             show_404();
@@ -157,7 +159,7 @@ class AdminController extends Controller
         $this->data['record'] = $this->{$this->model_class}->find($id);
         if ($_POST) {
             try {
-                $this->{$this->model_class}->update($id, $this->request->getPost());
+                $this->{$this->model_class}->update($id, $data);
                 return [
                     'url' => '/' . $this->redirect,
                     'confirm' => 'The item was updated.',
