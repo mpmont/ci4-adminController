@@ -130,7 +130,7 @@ class AdminController extends Controller
      * default create function
      * @param array $data The form data
      */
-    protected function admin_create(array $data)
+    protected function adminCreate(array $data)
     {
         if ($_POST) {
             try {
@@ -151,7 +151,7 @@ class AdminController extends Controller
      * @param int   $id   The id we're working with
      * @param array $data The form data
      */
-    protected function admin_update($id, array $data)
+    protected function adminUpdate($id, array $data)
     {
         if (is_null($id)) {
             show_404();
@@ -175,7 +175,7 @@ class AdminController extends Controller
      * Default delete function
      * @param int $id The id we're working with
      */
-    protected function admin_delete($id)
+    protected function adminDelete($id)
     {
         if (is_null($id)) {
             show_404();

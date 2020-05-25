@@ -32,7 +32,7 @@ codeigniter-base-controller is an extended `BaseController` class to use in your
          */
         public function create()
         {
-            return $this->admin_create($this->request->getPost());
+            return $this->adminCreate($this->request->getPost());
         }
         
         /**
@@ -41,7 +41,7 @@ codeigniter-base-controller is an extended `BaseController` class to use in your
          */
         public function update($id)
         {
-            return $this->admin_update($id, $this->request->getPost());
+            return $this->adminUpdate($id, $this->request->getPost());
         }
         
         /**
@@ -50,7 +50,7 @@ codeigniter-base-controller is an extended `BaseController` class to use in your
          */
         public function delete($id = null)
         {
-            return $this->admin_delete($id);
+            return $this->adminDelete($id);
         }
         
     }
@@ -191,7 +191,7 @@ This way if your _Article_ controller needs access to a update functionallity al
 
     public function update($id)
     {
-        return $this->admin_update($id, $this->request->getPost());
+        return $this->adminUpdate($id, $this->request->getPost());
     }
 
 This update function should always return the update result that was set on your adminController function. 
@@ -202,7 +202,7 @@ In case you want to send the admin_update method something else other than your 
     {
         $data = $this->request->getPost();
         $data['my_new_field'] = 'foobar';
-        return $this->admin_update($id, $this->request->getPost());
+        return $this->adminUpdate($id, $this->request->getPost());
     }
 
 This is specially usefull if you want to add some extra data that was not given by the post.
@@ -215,7 +215,7 @@ In case you need to override this behavior that can be done by returning a difer
 
     public function update($id)
     {
-        $this->admin_update($id, $this->request->getPost());
+        $this->adminUpdate($id, $this->request->getPost());
         return [
             'url' => '/admin/list_articles',
             'success' => 'Your article was updated.'
