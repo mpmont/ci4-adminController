@@ -128,6 +128,7 @@ class AdminController extends Controller
 
     /**
      * default create function
+     * @param array $data The form data
      */
     protected function admin_create(array $data)
     {
@@ -147,7 +148,8 @@ class AdminController extends Controller
 
     /**
      * Default update function
-     * @param int $id The id we're working with
+     * @param int   $id   The id we're working with
+     * @param array $data The form data
      */
     protected function admin_update($id, array $data)
     {

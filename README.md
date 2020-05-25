@@ -32,7 +32,7 @@ codeigniter-base-controller is an extended `BaseController` class to use in your
          */
         public function create()
         {
-            return $this->admin_create();
+            return $this->admin_create($this->request->getPost());
         }
         
         /**
@@ -41,7 +41,7 @@ codeigniter-base-controller is an extended `BaseController` class to use in your
          */
         public function update($id)
         {
-            return $this->admin_update($id);
+            return $this->admin_update($id, $this->request->getPost());
         }
         
         /**
@@ -107,7 +107,7 @@ If you want to load helpers in your controllers in a global scope and not inside
  
     <?php namespace App\Controllers;
     
-    class Home extends AadminController
+    class Home extends AdminController
     {
         protected $helpers = ['url'];
     
@@ -122,7 +122,7 @@ If you want to load helpers in your controllers in a global scope and not inside
 
 If you're using a structure like this you cannot redirect directly in your controllers, that must be handled by your adminController. 
 
-Let's say you have a controller method called contacts and you want to readirect your user in case he submits a form to it.
+Let's say you have a controller method called contacts and you want to redirect your user in case he submits a form to it.
 
     /**
      * Contact form
@@ -191,7 +191,7 @@ This way if your _Article_ controller needs access to a update functionallity al
 
     public function update($id)
     {
-        return $this->admin_update($id);
+        return $this->admin_update($id, $this->request->getPost());
     }
 
 This update function should always return the update result that was set on your adminController function. By default the success action of this function will always redirect to your index function in your controller. Using this structure always assume that you have a index function.
@@ -202,7 +202,7 @@ In case you need to override this behavior that can be done by returning a difer
 
     public function update($id)
     {
-        $this->admin_update($id);
+        $this->admin_update($id, $this->request->getPost());
         return [
             'url' => '/admin/list_articles',
             'success' => 'Your article was updated.'
