@@ -194,9 +194,22 @@ This way if your _Article_ controller needs access to a update functionallity al
         return $this->admin_update($id, $this->request->getPost());
     }
 
-This update function should always return the update result that was set on your adminController function. By default the success action of this function will always redirect to your index function in your controller. Using this structure always assume that you have a index function.
+This update function should always return the update result that was set on your adminController function. 
 
-This redirect will also set a confirm flasdata automatically that can be used in your views. 
+In case you want to send the admin_update method something else other than your post data you can do it just like this:
+
+    public function update($id)
+    {
+        $data = $this->request->getPost();
+        $data['my_new_field'] = 'foobar';
+        return $this->admin_update($id, $this->request->getPost());
+    }
+
+This is specially usefull if you want to add some extra data that was not given by the post.
+
+By default the success action of this function will always redirect to your index function in your controller. Using this structure always assume that you have a index function.
+
+This redirect will also set a confirm flashdata automatically that can be used in your views. 
 
 In case you need to override this behavior that can be done by returning a diferent result.
 
