@@ -83,7 +83,7 @@ In order to specify where in your layout you'd like to output the view, the rend
     <h1>Header</h1>
 
     <div id="page">
-        <?php echo view($yield) ?>
+        <?php echo $this->renderSection('yield') ?>
     </div>
 
     <p>Footer</p>
