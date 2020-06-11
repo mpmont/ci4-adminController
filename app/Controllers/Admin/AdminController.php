@@ -110,13 +110,9 @@ class AdminController extends Controller
         }
 
         if ($this->view !== false) {
+            $this->data['layout'] = (empty($this->layout)) ? 'layouts/nolayout' : $this->layout;
             $this->data['yield'] = (!empty($this->view)) ? $this->view : strtolower($view_folder . '/' . $router->methodName());
-
-            if ($this->layout === false) {
-                echo view($this->data['yield'], $this->data);
-            } else {
-                echo view($this->layout, $this->data);
-            }
+            echo view($this->data['yield'], $this->data);
         }
     }
 
