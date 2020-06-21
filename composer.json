@@ -1,0 +1,13 @@
+{
+    "name": "mpmont/ci-admin-controller",
+    "description": "View autoloading for Codeigniter 4 Framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco Monteiro",
+            "email": "marco@marcomonteiro.net"
+        }
+    ],
+    "require": {}
+}
