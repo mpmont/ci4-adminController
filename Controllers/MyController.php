@@ -21,7 +21,9 @@ namespace MyController\Controllers;
  * @link       https://blog.marcomonteiro.net
  */
 
-class MyController extends \Codeigniter\Controller
+use CodeIgniter\Controller;
+
+class MyController extends Controller
 {
 
     /**
