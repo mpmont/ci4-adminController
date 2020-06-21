@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace MyController\Controllers;
 
 /**
  * Class BaseController
@@ -21,9 +21,7 @@ namespace App\Controllers;
  * @link       https://blog.marcomonteiro.net
  */
 
-use CodeIgniter\Controller;
-
-class BaseController extends Controller
+class MyController extends \Codeigniter\Controller
 {
 
     /**

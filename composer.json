@@ -9,5 +9,10 @@
             "email": "marco@marcomonteiro.net"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "MyController\\": "/"
+        }
+    },
     "require": {}
 }
