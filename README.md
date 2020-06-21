@@ -58,7 +58,40 @@ codeigniter-base-controller is an extended `BaseController` class to use in your
 
 ## Usage
 
+### Manual Instalation
+
 Drag the **AdminController.php** file into your _app/Controllers/Admin/_ folder. This way, you have a distinct difference bettwen your backend and front-end. All your controller inside this folder should extend to adminController and your controllers outside this folder should extend to baseController. This way, only your backend controllers will have access to your CRUD functions.
+
+### Composer install
+
+This way you should run the following command in your terminal.
+
+    composer require marcogmonteiro/ci-admin-controller
+
+Or add the following to your composer.json file.
+
+    {
+        "require": {
+            "marcogmonteiro/ci-admin-controller": "dev-master"
+        }
+    }
+
+If you install the package via composer then controllers shoulse use a different namespace. In that case your controllers that extend to base Controller should extend to \MyController\Controllers\MyController and the ones that will use the adminController should use \MyController\Controllers\Admin\AdminController, like so:
+
+    <?php namespace App\Controllers;
+
+    class Home extends \MyController\Controllers\MyController
+    {
+
+        /**
+         * No view loading here!
+         */
+        public function index()
+        {
+        }
+
+    }
+
 
 ## Views and Layouts
 
