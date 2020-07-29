@@ -180,65 +180,6 @@ If you want to load helpers in your controllers in a global scope and not inside
     }
 
 
-## Redirects and flashdata
-
-If you're using a structure like this you cannot redirect directly in your controllers, that must be handled by your adminController.
-
-Let's say you have a controller method called contacts and you want to redirect your user in case he submits a form to it.
-
-    /**
-     * Contact form
-     */
-    public function contacts()
-    {
-        if ( $_POST) {
-            $email = \Config\Services::email();
-
-            $email->setFrom('your@example.com', 'Your Name');
-            $email->setTo('someone@example.com');
-
-            $email->setSubject('Email Test');
-            $email->setMessage('Testing the email class.');
-
-            if ($email->send() ) {
-                return [
-                    'url' => '/homepage',
-                ];
-            }
-        }
-    }
-
-If you want to append errors or success messages to your redirect all your need to do is specify that in your return array.
-
-    return [
-        'url' => '/homepage',
-        'success' => 'Your email was sent!'
-    ];
-
-If you want to return errors then just change the confirm key to errors, however that one should be an array.
-
-    return [
-        'url' => '/homepage',
-        'errors' => [
-            'There was a problem while sending your email',
-            'Please try again later'
-        ]
-    ];
-
-In case you need to return a message that is neither a success or an error you can do that with the _mgs_ return key.
-
-    return [
-        'url' => '/homepage',
-        'msg' => 'Star Trek is great, specially when Chewbacca shows up!'
-    ];
-
-In any case if you just want to do a readirect like you would normally do in your controller method that is supported too. In the same example presented you would just do:
-
-    if ($email->send() ) {
-        redirect()->to('/homepage');
-    }
-
-
 ## AdminController CRUD
 
 There's a few functions that you can use in your adminController that are not avaiable in your baseController. To do that some rules must be followed. First you need to load the main model your controller will be working with. Let's say you have a Articles controller and a ArticleModel first you load your model.
