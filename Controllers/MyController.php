@@ -83,32 +83,22 @@ class MyController extends Controller
 
         $controller_full_name = explode('\\', $router->controllerName());
         $view_folder = strtolower(end($controller_full_name));
-
+        //Checks if it's a 404 or not
         if (method_exists($this, $method)) {
             $redirect = call_user_func_array(array($this, $method), $this->arguments);
         } else {
             show_404(strtolower(get_class($this)) . '/' . $method);
         }
-
+        //Check if it's a redirect or not
         if (isset($redirect) && is_object($redirect) && get_class($redirect) === 'CodeIgniter\HTTP\RedirectResponse') {
             return $redirect;
-        } else if (isset($redirect['url'])) {
-            $confirm = (isset($redirect['confirm'])) ? $redirect['confirm'] : null;
-            if (!empty($confirm)) {
-                return redirect()->to($redirect['url'])->with('confirm', $redirect['confirm']);
-            }
-            $errors = (isset($redirect['errors'])) ? $redirect['errors'] : null;
-            if (!empty($errors)) {
-                return redirect()->to($redirect['url'])->with('errors', $redirect['errors']);
-            }
-            return redirect()->to($redirect['url']);
         }
-
         if ($this->view !== false) {
             $this->data['layout'] = (empty($this->layout)) ? 'layouts/nolayout' : $this->layout;
             $this->data['yield'] = (!empty($this->view)) ? $this->view : strtolower($view_folder . '/' . $router->methodName());
-            echo view($this->data['yield'], $this->data);
+            return view($this->data['yield'], $this->data);
         }
+        return $redirect;
     }
 
 }
