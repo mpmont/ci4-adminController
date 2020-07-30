@@ -34,6 +34,7 @@ class MyController extends Controller
      * @var array
      */
     protected $helpers = [];
+    protected $extra_helpers = null;
     protected $view = null; // Set default yield view
     protected $data = []; // Set default data array
     protected $layout = 'layouts/application'; // Set default layout
@@ -64,6 +65,13 @@ class MyController extends Controller
         // Arguments to be used in the callback remap
         $segments = $request->uri->getSegments();
         $this->arguments = array_slice($segments, 2);
+        //Checks if the user has extra helpers and loads them with the default ones
+        if (!is_null($this->extra_helpers) && is_array($this->extra_helpers)) {
+            $this->helpers = array_merge($this->helpers, $this->extra_helpers);
+        }
+        foreach ($this->helpers as $helper) {
+            helper($helper);
+        }
     }
 
     /**

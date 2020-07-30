@@ -163,7 +163,7 @@ The complete folder structure is now included in the project.
 
 ## Loading Helpers in your controllers
 
-If you want to load helpers in your controllers in a global scope and not inside a function all your have to do is declare the helpers property as array with all your helpers, like so:
+If you want to load helpers in your controllers in a global scope and not inside a function you must declare them in a array called extra_helpers,like so:
 
 
 
@@ -171,7 +171,7 @@ If you want to load helpers in your controllers in a global scope and not inside
 
     class Home extends AdminController
     {
-        protected $helpers = ['url'];
+        protected $extra_helpers = ['foo', 'bar'];
 
         public function index()
         {
