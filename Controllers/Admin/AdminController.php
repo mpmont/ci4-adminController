@@ -29,7 +29,7 @@ class AdminController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['form', 'error']; // Load helpers
+    protected $helpers = [];
     protected $view = null; // Set default yield view
     protected $data = []; // Set default data array
     protected $directory = 'admin'; // Set default directory
@@ -90,7 +90,7 @@ class AdminController extends Controller
         if (method_exists($this, $method)) {
             $redirect = call_user_func_array(array($this, $method), $this->arguments);
         } else {
-            show_404(strtolower(get_class($this)) . '/' . $method);
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
         //Check if it's a redirect or not
         if (isset($redirect) && is_object($redirect) && get_class($redirect) === 'CodeIgniter\HTTP\RedirectResponse') {

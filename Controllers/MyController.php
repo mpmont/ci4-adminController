@@ -87,7 +87,7 @@ class MyController extends Controller
         if (method_exists($this, $method)) {
             $redirect = call_user_func_array(array($this, $method), $this->arguments);
         } else {
-            show_404(strtolower(get_class($this)) . '/' . $method);
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
         //Check if it's a redirect or not
         if (isset($redirect) && is_object($redirect) && get_class($redirect) === 'CodeIgniter\HTTP\RedirectResponse') {
