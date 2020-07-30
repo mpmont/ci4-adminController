@@ -29,6 +29,7 @@ class AdminController extends Controller
      *
      * @var array
      */
+    protected $helpers = [];
     protected $view = null; // Set default yield view
     protected $data = []; // Set default data array
     protected $directory = 'admin'; // Set default directory

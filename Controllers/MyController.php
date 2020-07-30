@@ -33,6 +33,7 @@ class MyController extends Controller
      *
      * @var array
      */
+    protected $helpers = [];
     protected $view = null; // Set default yield view
     protected $data = []; // Set default data array
     protected $layout = 'layouts/application'; // Set default layout
